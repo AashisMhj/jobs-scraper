@@ -12,7 +12,12 @@ class JobsnepalSpider(scrapy.Spider):
 
         next_page = response.css('[aria-label="Next &raquo;"]::attr(href)')
         if next_page:
-            
+            print('has next page')
+            print(next_page)
+            next_page_link = next_page.get()
+            print(next_page_link)
+            yield response.follow(next_page_link, self.parse)
+
 
     def parseDetail(self, response):
         jobDetail = response.css('div.job-details')
