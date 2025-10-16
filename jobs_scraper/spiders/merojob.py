@@ -17,7 +17,7 @@ class MerojobComSpider(scrapy.Spider):
 
     def parseDetail(self, response):
         yield {
-            'name': response.css('div#short-description strong::text').get(),
+            'company_name': response.css('div#short-description strong::text').get(),
             'location': response.css('div.card-body table tr')[4].css('td span::text').get() if len(response.css('div.card-body table tr')) >=5 else '' ,
             'image': response.css('div.media img::attr(src)').get(),
             'website': '',

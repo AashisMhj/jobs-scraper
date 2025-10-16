@@ -12,10 +12,7 @@ class JobsnepalSpider(scrapy.Spider):
 
         next_page = response.css('[aria-label="Next &raquo;"]::attr(href)')
         if next_page:
-            print('has next page')
-            print(next_page)
             next_page_link = next_page.get()
-            print(next_page_link)
             yield response.follow(next_page_link, self.parse)
 
 
@@ -28,10 +25,10 @@ class JobsnepalSpider(scrapy.Spider):
             values = jobOverview[index].css('td span::text').getall() if index < job_overview_length else []
             return values[0] if len(values) >= 1 else ''
         yield{
-            'name': response.css('div.company-title::text').get(),
+            'company-name': response.css('div.company-title::text').get(),
             'location': response.css('tr[itemprop=jobLocation] a span::text').get(),
-            'image': response.css('div.company-logo img::attr(src)').get(),
-            'website': '',
+            'company-image': response.css('div.company-logo img::attr(src)').get(),
+            'company-website': '',
             'job-title': jobDetail.css('h1::text').get(),
             'position': '',
             'level': getOverviewItem(4),
@@ -40,9 +37,10 @@ class JobsnepalSpider(scrapy.Spider):
             'job-type': getOverviewItem(3),
             'salary': getOverviewItem(2),
             'education': '',
+            'desired-gender': '',
             'type': '',
             'deadline': response.css('span.apply-deadline::text').get(),
             'description': response.css('span[itemprop=description]').get(),
             'url': response.url,
-            # 'slug': slugify(jobDetail.css('h1::text').get())
+            'slug': slugify(jobDetail.css('h1::text').get())
         }
