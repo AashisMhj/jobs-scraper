@@ -20,7 +20,7 @@ class JobaxleSpider(scrapy.Spider):
         yield {
             'company-name': data['member']['fullName'],
             'location': data['member']['employerDetail'][0]['companyLocation']['title'] ,
-            'image': f"https://jobaxle.com/api/image/company_logo/{data['member']['profileImage']}",
+            'company-image': f"https://jobaxle.com/api/image/company_logo/{data['member']['profileImage']}",
             'website': '',
             'job-title': data['jobTitle'],
             'position': '',

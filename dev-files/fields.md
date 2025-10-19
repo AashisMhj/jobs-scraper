@@ -1,4 +1,5 @@
 **scraped fields details**
+
 - company-name: name of the company
 - location: location of the company
 - image: image of the company
@@ -9,10 +10,41 @@
 - experience: Required job experience
 - total-position: No of open vacancy
 - job-type: Full Time, Part Time
-- salary: 
+- salary:
 - education
+- desired-gender:
+- skills:
 - type: Remote, Hybrid, On-site
 - deadline: deadline to submit application
 - description: job description and specification
 - url: scraped url
-- slug: generated slug from title 
+- slug: generated slug from title
+
+```python
+yield {
+    'company-name': '',
+    'location': ,
+    'company-image': '',
+    'company-website': '',
+    'job-title': '',
+    'position': '',
+    'level': '',
+    'experience': '',
+    'total-position': '',
+    'job-type': '',
+    'salary': '',
+    'education': '',
+    'desired-gender': '',
+    'skills': '',
+    'type': '',
+    'deadline':'',
+    'description': '',
+    'url': response.url,
+    'slug': ''
+}
+```
+
+<!-- fields to add -->
+- desired-gender: (in all)
+- skills: (in all)
+- category: job category field (hotel, it, finance)
