@@ -23,7 +23,7 @@ class KumarijobSpider(scrapy.Spider):
             for row in rows:
                 self.logger.info(row.css('.basic-item__left::text').get())
                 if row.css('.basic-item__left::text').get() == label:
-                    return row.css('.basic-item__right::text').get()
+                    return row.css('.basic-item__right::text').get().replace(",", "|")
                 
             return ''
         yield {

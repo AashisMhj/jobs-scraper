@@ -16,7 +16,6 @@ class JobaxleSpider(scrapy.Spider):
     def parseDetail(self, response):
         resJson = response.json()
         data = resJson['data']['jobDetail']
-        # self.logger.info(data['member']['employerDetail'])
         yield {
             'company-name': data['member']['fullName'],
             'location': data['member']['employerDetail'][0]['companyLocation']['title'] ,

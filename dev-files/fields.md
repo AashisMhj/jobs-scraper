@@ -23,7 +23,7 @@
 ```python
 yield {
     'company-name': '',
-    'location': ,
+    'location': '',
     'company-image': '',
     'company-website': '',
     'job-title': '',
@@ -40,11 +40,20 @@ yield {
     'deadline':'',
     'description': '',
     'url': response.url,
-    'slug': ''
+    'slug': '',
+    'posted-at': '',
+    'view-count': '',
 }
 ```
 
 <!-- fields to add -->
 - desired-gender: (in all)
 - skills: (in all)
+- posted-at: the date of the job posted (in all)
+- view-count: (in all)
 - category: job category field (hotel, it, finance)
+- company-industry
+- no-of-applied
+- shift
+- working-days
+- shift
