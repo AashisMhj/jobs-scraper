@@ -1,0 +1,18 @@
+**scraped fields details**
+- company-name: name of the company
+- location: location of the company
+- image: image of the company
+- website: company website
+- job-title: Title of the job
+- position: Job Position (Field Engineer, Software Developer, UI/UX Developer), usually contained in title and there for empty
+- level: Job Level (Beginner, Expert etc)
+- experience: Required job experience
+- total-position: No of open vacancy
+- job-type: Full Time, Part Time
+- salary: 
+- education
+- type: Remote, Hybrid, On-site
+- deadline: deadline to submit application
+- description: job description and specification
+- url: scraped url
+- slug: generated slug from title 
