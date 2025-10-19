@@ -1,7 +1,7 @@
 **scraped fields details**
 
 - company-name: name of the company
-- location: location of the company
+- location: location of the company or job
 - image: image of the company
 - website: company website
 - job-title: Title of the job
@@ -37,6 +37,7 @@ yield {
     'desired-gender': '',
     'skills': '',
     'type': '',
+    'preferred-shift': '',
     'deadline':'',
     'description': '',
     'url': response.url,
