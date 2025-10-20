@@ -17,6 +17,7 @@
 - type: Remote, Hybrid, On-site
 - deadline: deadline to submit application
 - description: job description and specification
+- job-specification: similar to description but contains responsibilities of job
 - url: scraped url
 - slug: generated slug from title
 
@@ -40,10 +41,13 @@ yield {
     'preferred-shift': '',
     'deadline':'',
     'description': '',
+    'job-specification': '',
     'url': response.url,
     'slug': '',
     'posted-at': '',
     'view-count': '',
+    'category': None,
+    'expired': False,
 }
 ```
 
@@ -52,7 +56,7 @@ yield {
 - skills: (in all)
 - posted-at: the date of the job posted (in all)
 - view-count: (in all)
-- category: job category field (hotel, it, finance)
+- category: (in all) job category field (hotel, it, finance)
 - company-industry
 - no-of-applied
 - shift
