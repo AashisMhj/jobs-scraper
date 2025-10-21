@@ -4,4 +4,4 @@
 1. [jobaxel](https://jobaxle.com/search): ✅
 1. [rojgari](https://rojgari.com/en): ✅
 1. [vocalpanda](https://www.vocalpanda.com/): ✅
-1. [jobsniper](https://www.jobssniper.com/): 
+1. [jobsniper](https://www.jobssniper.com/): ✅

@@ -7,7 +7,12 @@
 #     https://docs.scrapy.org/en/latest/topics/downloader-middleware.html
 #     https://docs.scrapy.org/en/latest/topics/spider-middleware.html
 
+import datetime
+import os
+from dotenv import load_dotenv
+
 BOT_NAME = "jobs_scraper"
+OUTPUT_DIR = os.getenv('SCRAPY_OUTPUT_DIR', 'outputs')
 
 SPIDER_MODULES = ["jobs_scraper.spiders"]
 NEWSPIDER_MODULE = "jobs_scraper.spiders"
@@ -94,3 +99,14 @@ DOWNLOAD_HANDLERS = {
 
 # settings.py
 TWISTED_REACTOR = "twisted.internet.asyncioreactor.AsyncioSelectorReactor"
+
+now = datetime.datetime.now().strftime("%Y-%m-%d_%H-%M-%S")
+filename = f'%(name)s_{now}.json'
+
+FEEDS = {
+    os.path.join(OUTPUT_DIR, filename): {
+        'format': 'json',
+        'encoding': 'utf-8',
+        'store_empty': False,
+    }
+}
