@@ -21,26 +21,38 @@ class JobsnepalSpider(scrapy.Spider):
         jobOverview = response.css('div.job-overview-inner table tr')
         job_overview_length = len(jobOverview)
 
-        def getOverviewItem(index):
-            values = jobOverview[index].css('td span::text').getall() if index < job_overview_length else []
-            return values[0] if len(values) >= 1 else ''
+        def getOverviewItem(label:str):
+            table_rows = jobOverview.css('tr')
+            for row in table_rows:
+                r = row.css('td::text').getAll()
+                if r[0] == label:
+                    return r[1]
+            return None
+
         yield{
             'company-name': response.css('div.company-title::text').get(),
             'location': response.css('tr[itemprop=jobLocation] a span::text').get(),
             'company-image': response.css('div.company-logo img::attr(src)').get(),
-            'company-website': '',
+            'company-website': None,
             'job-title': jobDetail.css('h1::text').get(),
-            'position': '',
-            'level': getOverviewItem(4),
-            'experience': '',
-            'total-position': getOverviewItem(1),
-            'job-type': getOverviewItem(3),
-            'salary': getOverviewItem(2),
-            'education': '',
-            'desired-gender': '',
-            'type': '',
+            'position': None,
+            'level': getOverviewItem('Level'),
+            'experience': getOverviewItem('Experience'),
+            'total-position': getOverviewItem('Openings'),
+            'job-type': getOverviewItem('Position Type'),
+            'salary': None,
+            'education': getOverviewItem('Education'),
+            'desired-gender': None,
+            'skills': None,
+            'type': None,
+            'preferred-shift': None,
             'deadline': response.css('span.apply-deadline::text').get(),
             'description': response.css('span[itemprop=description]').get(),
+            'job-specification': None,
             'url': response.url,
-            'slug': slugify(jobDetail.css('h1::text').get())
+            'slug': slugify(jobDetail.css('h1::text').get()),
+            'posted-at': getOverviewItem('Posted Date'),
+            'view-count': None,
+            'category': None,
+            'expired': None
         }

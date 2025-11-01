@@ -9,7 +9,7 @@
 - level: Job Level (Beginner, Expert etc)
 - experience: Required job experience
 - total-position: No of open vacancy
-- job-type: Full Time, Part Time
+- job-type: Full Time, Part Time, Contract
 - salary:
 - education
 - desired-gender:
@@ -57,8 +57,9 @@ yield {
 - posted-at: the date of the job posted (in all)
 - view-count: (in all)
 - category: (in all) job category field (hotel, it, finance)
+- expired: (in all)
+
 - company-industry
 - no-of-applied
 - shift
 - working-days
-- shift
