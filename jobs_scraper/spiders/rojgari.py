@@ -31,11 +31,14 @@ class RojgariSpider(scrapy.Spider):
             'desired-gender': data['setting'].get('gender', 'Both'),
             'skills': " | ".join(data['skills']),
             'type': None,
+            'preferred-shift': data.get('preferred_shift'),
             'deadline':data['deadline'],
             'description': data['description'],
+            'job-specification': None,
             'url': response.url,
             'slug': slugify(data['job_title']),
             'posted-at': data['posted_at'],
             'view-count': data['hit_count'],
-            'preferred-shift': data.get('preferred_shift')
+            'category': " , ".join([x['name'] for x in data['categories']]),
+            'expired': data['is_expired']
         }

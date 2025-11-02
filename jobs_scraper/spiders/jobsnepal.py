@@ -24,9 +24,9 @@ class JobsnepalSpider(scrapy.Spider):
         def getOverviewItem(label:str):
             table_rows = jobOverview.css('tr')
             for row in table_rows:
-                r = row.css('td::text').getAll()
-                if r[0] == label:
-                    return r[1]
+                r = row.css('td')
+                if r[0].css('::text').get().strip() == label:
+                    return " ".join(r[1].css("*::text").getall())
             return None
 
         yield{

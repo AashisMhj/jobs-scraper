@@ -21,30 +21,33 @@ class KumarijobSpider(scrapy.Spider):
         def getRowValueByLabel(label):
             rows = response.css('.job-detail-box li.row')
             for row in rows:
-                self.logger.info(row.css('.basic-item__left::text').get())
                 if row.css('.basic-item__left::text').get() == label:
-                    return row.css('.basic-item__right::text').get().replace(",", "|")
-                
-            return ''
+                    return row.css('.basic-item__right::text').get().replace(",", "|")                
+            return None
         yield {
             'company-name': response.css('.company-name::text').get(),
             'location': getRowValueByLabel('Location'),
             'company-image': response.css('.company-logo img::attr(src)').get(),
-            'company-website': '',
+            'company-website': None,
             'job-title': response.css('h1.d-flex span::text').get(),
-            'position': '',
+            'position': None,
             'level': getRowValueByLabel('Job Level'),
             'experience': getRowValueByLabel('Experience'),
             'total-position': getRowValueByLabel('No. of Openings'),
             'job-type': getRowValueByLabel('Category'),
             'salary': getRowValueByLabel('Salary'),
             'education': getRowValueByLabel('Eduction Level'),
-            'desired-gender': '',
+            'desired-gender': getRowValueByLabel('Desired Candidate'),
             'skills': getRowValueByLabel('Skills'),
-            'type': '',
+            'type': getRowValueByLabel('Job Type'),
+            'preferred-shift': None,
             'deadline':getRowValueByLabel('Expiry date'),
             'description': response.css('.job-description-wrap').get(),
+            'job-specification': None,
             'url': response.url,
-            'slug': slugify(response.css('h1.d-flex span::text').get())
-
+            'slug': slugify(response.css('h1.d-flex span::text').get()),
+            'posted-at': None,
+            'view-count': None,
+            'category': getRowValueByLabel('Category'),
+            'expired': getRowValueByLabel('Expiry Date')
         }

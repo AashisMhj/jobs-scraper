@@ -2,8 +2,8 @@
 
 - company-name: name of the company
 - location: location of the company or job
-- image: image of the company
-- website: company website
+- company-image: image of the company
+- company-site: company website
 - job-title: Title of the job
 - position: Job Position (Field Engineer, Software Developer, UI/UX Developer), usually contained in title and there for empty
 - level: Job Level (Beginner, Expert etc)
@@ -52,12 +52,6 @@ yield {
 ```
 
 <!-- fields to add -->
-- desired-gender: (in all)
-- skills: (in all)
-- posted-at: the date of the job posted (in all)
-- view-count: (in all)
-- category: (in all) job category field (hotel, it, finance)
-- expired: (in all)
 
 - company-industry
 - no-of-applied
