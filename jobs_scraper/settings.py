@@ -10,6 +10,7 @@
 import datetime
 import os
 from dotenv import load_dotenv
+load_dotenv()
 
 BOT_NAME = "jobs_scraper"
 OUTPUT_DIR = os.getenv('SCRAPY_OUTPUT_DIR', 'outputs')
