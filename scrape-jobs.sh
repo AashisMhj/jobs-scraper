@@ -1,4 +1,4 @@
-#!/bin/bash bash
+#!/bin/bash
 set -euo pipefail
 
 # Resolve the directory this script lives in, regardless of where it's called from
