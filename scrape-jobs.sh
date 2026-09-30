@@ -5,7 +5,7 @@ set -euo pipefail
 SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
 
 VENV_DIR="$SCRIPT_DIR/.venv"
-SPIDER_DIR="$SCRIPT_DIR/job_scraper"
+SPIDER_DIR="$SCRIPT_DIR/jobs_scraper"
 
 
 cd "$SPIDER_DIR"
