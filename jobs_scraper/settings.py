@@ -14,6 +14,7 @@ load_dotenv()
 
 BOT_NAME = "jobs_scraper"
 OUTPUT_DIR = os.getenv('SCRAPY_OUTPUT_DIR', 'outputs')
+ERROR_DIR = os.getenv('SCRAPY_ERROR_DIR', 'errors')
 
 SPIDER_MODULES = ["jobs_scraper.spiders"]
 NEWSPIDER_MODULE = "jobs_scraper.spiders"
@@ -111,3 +112,10 @@ FEEDS = {
         'store_empty': False,
     }
 }
+
+month = datetime.datetime.now().strftime("%Y-%m")
+
+LOG_FILE = os.path.join(ERROR_DIR, f'flight-status-{month}.log')
+LOG_LEVEL = "WARNING"
+LOG_ENCODING = "utf-8"
+LOG_FILE_APPEND = True   # append across runs in the same month

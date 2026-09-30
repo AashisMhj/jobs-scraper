@@ -1,11 +1,17 @@
-#!/usr/bin/env bash
-source .venv/bin/activate
+#!/bin/bash bash
+set -euo pipefail
 
-log=$(mktemp)
-trap 'rm -f "$log"' EXIT
+# Resolve the directory this script lives in, regardless of where it's called from
+SCRIPT_DIR="$(cd "$(dirname "$(readlink -f "$0")")" && pwd)"
+
+VENV_DIR="$SCRIPT_DIR/.venv"
+SPIDER_DIR="$SCRIPT_DIR/job_scraper"
+
+
+cd "$SPIDER_DIR"
 
 for spider in jobaxle jobsnepal jobssniper kumarijob merojob rojgari vocalpanda; do
-    scrapy crawl "$spider" --loglevel=WARNING 2>&1 | tee -a "$log"
+    "$VENV_DIR/bin/scrapy" crawl "$spider" --loglevel=WARNING 2>&1 | tee -a "$log"
 done
 
 # A spider whose site changed still exits cleanly, so the run is judged on what
